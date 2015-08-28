@@ -3,16 +3,11 @@
  */
 public class Dolar extends Dinheiro{
 
-    public Dolar(int valor) {
-        this.valor = valor;
+    Dolar(int valor, String moeda) {
+        super(valor, moeda);
     }
 
-    public Dolar vezes(int multiplicador) {
-        return new Dolar(valor * multiplicador);
-    }
-
-    public boolean equals(Object objeto){
-        Dinheiro dinheiro = (Dinheiro) objeto;
-        return valor == dinheiro.valor;
+    public Dinheiro vezes(int multiplicador) {
+        return new Dolar(valor * multiplicador, moeda);
     }
 }

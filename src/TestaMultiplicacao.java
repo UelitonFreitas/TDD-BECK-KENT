@@ -10,25 +10,37 @@ public class TestaMultiplicacao {
     @Test
     public void testaMultiplicacao() {
 
-        Dolar cinco = new Dolar(5);
+        Dolar cinco = Dinheiro.dolar(5);
 
-        assertEquals(new Dolar(10), cinco.vezes(2));
-        assertEquals(new Dolar(15), cinco.vezes(3));
+        assertEquals(Dinheiro.dolar(10), cinco.vezes(2));
+        assertEquals(Dinheiro.dolar(15), cinco.vezes(3));
     }
 
     @Test
     public void testaIgualdade() {
-        assertTrue(new Dolar(5).equals(new Dolar(5)));
-        assertFalse(new Dolar(5).equals(new Dolar(6)));
-        assertTrue(new Franco(5).equals(new Franco(5)));
-        assertFalse(new Franco(5).equals(new Franco(6)));
+        assertTrue(Dinheiro.dolar(5).equals(Dinheiro.dolar(5)));
+        assertFalse(Dinheiro.dolar(5).equals(Dinheiro.dolar(6)));
+        assertTrue(Dinheiro.franco(5).equals(Dinheiro.franco(5)));
+        assertFalse(Dinheiro.franco(5).equals(Dinheiro.franco(6)));
+        assertFalse(Dinheiro.franco(5).equals(Dinheiro.dolar(5)));
     }
 
     @Test
     public void testaMultiplicacaoDeFrancos() {
-        Franco cinco = new Franco(5);
+        Dinheiro cinco = Dinheiro.franco(5);
 
-        assertEquals(new Dolar(10), cinco.vezes(2));
-        assertEquals(new Dolar(15), cinco.vezes(3));
+        assertEquals(Dinheiro.franco(10), cinco.vezes(2));
+        assertEquals(Dinheiro.franco(15), cinco.vezes(3));
+    }
+
+    @Test
+    public void testaMoeda(){
+        assertEquals("USD", Dinheiro.dolar(1).moeda);
+        assertEquals("CHF", Dinheiro.franco(1).moeda);
+    }
+
+    @Test
+    public void testaDiferencaDaIgualdadeDeClasses(){
+        assertTrue(new Dinheiro(10, "CHF").equals(new Franco(10, "CHF")));
     }
 }
