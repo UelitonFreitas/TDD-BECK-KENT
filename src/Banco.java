@@ -9,7 +9,7 @@ public class Banco {
 
     public Dinheiro converte(Expressao expressao, String paraMoeda) {
 
-        return (Dinheiro) expressao.converte(this, paraMoeda);
+        return expressao.converte(this, paraMoeda);
     }
 
     public int taxa(String de, String para){
