@@ -19,7 +19,11 @@ public class Soma implements Expressao{
     }
 
     @Override
-    public Expressao mais(Expressao dezFrancos) {
-        return null;
+    public Expressao mais(Expressao adendo) {
+        return new Soma(this, adendo);
+    }
+
+    public Expressao vezes(int multiplicador) {
+        return new Soma(augendo.vezes(multiplicador), adendo.vezes(multiplicador));
     }
 }

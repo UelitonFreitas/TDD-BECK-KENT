@@ -7,4 +7,6 @@ public interface Expressao {
     public Dinheiro converte(Banco banco, String paraMoeda);
 
     Expressao mais(Expressao dezFrancos);
+
+    Expressao vezes(int multiplicador);
 }

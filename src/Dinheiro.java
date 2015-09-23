@@ -12,7 +12,7 @@ public class Dinheiro implements Expressao{
         this.moeda = moeda;
     }
 
-    Expressao vezes(int multiplicador){
+    public Expressao vezes(int multiplicador){
 
         return new Dinheiro(multiplicador * valor, moeda);
     }

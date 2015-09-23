@@ -121,4 +121,38 @@ public class TestaDinheiro {
 
         assertEquals(Dinheiro.dolar(10), resultado);
     }
+
+    @Test
+    public void testaSomaMaisDinheiro(){
+
+        Expressao cincoDolares = Dinheiro.dolar(5);
+        Expressao dezFrancos = Dinheiro.franco(10);
+
+        Banco banco  = new Banco();
+        banco.adicionaTaxas("CHF", "USD", 2);
+
+        Expressao soma = new Soma(cincoDolares, dezFrancos).mais(cincoDolares);
+
+        Dinheiro resultado = banco.converte(soma, "USD");
+
+        assertEquals(Dinheiro.dolar(15), resultado);
+
+    }
+
+    @Test
+    public void testaSomaVezes(){
+
+        Expressao cincoDolares = Dinheiro.dolar(5);
+        Expressao dezFrancos = Dinheiro.franco(10);
+
+        Banco banco  = new Banco();
+        banco.adicionaTaxas("CHF", "USD", 2);
+
+        Expressao soma = new Soma(cincoDolares, dezFrancos).vezes(2);
+
+        Dinheiro resultado = banco.converte(soma, "USD");
+
+        assertEquals(Dinheiro.dolar(20), resultado);
+    }
+
 }
