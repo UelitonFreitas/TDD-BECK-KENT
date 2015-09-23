@@ -12,7 +12,7 @@ public class Dinheiro implements Expressao{
         this.moeda = moeda;
     }
 
-    Dinheiro vezes(int multiplicador){
+    Expressao vezes(int multiplicador){
 
         return new Dinheiro(multiplicador * valor, moeda);
     }
@@ -35,7 +35,7 @@ public class Dinheiro implements Expressao{
         return valor == dinheiro.valor && moeda.equals(dinheiro.moeda);
     }
 
-    public Expressao mais(Dinheiro adendo) {
+    public Expressao mais(Expressao adendo) {
         return new Soma(this, adendo);
     }
 

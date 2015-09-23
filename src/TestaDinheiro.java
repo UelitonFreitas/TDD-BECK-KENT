@@ -107,4 +107,18 @@ public class TestaDinheiro {
     public void testaIdentidadesDaTaxa(){
         assertEquals(1, new Banco().taxa("USD", "USD"));
     }
+
+    @Test
+    public void testaAdicaoMista(){
+
+        Expressao cincoDolares = Dinheiro.dolar(5);
+        Expressao dezFrancos = Dinheiro.franco(10);
+
+        Banco banco = new Banco();
+        banco.adicionaTaxas("CHF", "USD", 2);
+
+        Dinheiro resultado = banco.converte(cincoDolares.mais(dezFrancos), "USD");
+
+        assertEquals(Dinheiro.dolar(10), resultado);
+    }
 }

@@ -3,10 +3,10 @@
  */
 public class Soma implements Expressao{
 
-    Dinheiro augendo;
-    Dinheiro adendo;
+    Expressao augendo;
+    Expressao adendo;
 
-    public Soma(Dinheiro augendo, Dinheiro adendo) {
+    public Soma(Expressao augendo, Expressao adendo) {
 
         this.augendo = augendo;
         this.adendo = adendo;
@@ -14,7 +14,12 @@ public class Soma implements Expressao{
 
     public Dinheiro converte(Banco banco, String tipoDeMoeda) {
 
-        int resultado = augendo.valor+adendo.valor;
+        int resultado = augendo.converte(banco, tipoDeMoeda).valor+adendo.converte(banco, tipoDeMoeda).valor;
         return new Dinheiro(resultado, tipoDeMoeda);
+    }
+
+    @Override
+    public Expressao mais(Expressao dezFrancos) {
+        return null;
     }
 }
